@@ -1,0 +1,49 @@
+Files
+-----
+Reflection folder on moodle
+src > spring > springdriver.java
+src > spring > appConfig.xml ( for sample calls using XML )
+
+Notes
+------
+One thing to note, class names there are two types
+1. Basic class name
+2. Fully qualified class name - John smith that lives in x, vs john smith that lives in another place
+You can have classes of the same name, but under different packages
+
+Therefore no conflict if you have a TargetClass in package Boo vs package Main. Just need to unimport package Boo
+
+So the fully qualified name is Boo.TargetClass
+
+Need to know 1) which class you want to access before you can use reflection
+
+Objects, when represented in memory, are simply fields, attributes of the object. The objects really only contain the data. The common methods of objects exist, but not within the objects. 
+
+So the methods are not exactly what they seem to be. SetAge(TargetClass TC, int age). The data that it works on is important. 
+
+So when you call TC.SetAge(10), you're actually calling SetAge(TC, 10). Important for pulling out the specific method you want
+
+Now that you're using declaredMethod, you can use a scanner to trigger your program in an arbitrary way. You usually have to hardcode all those methods yourself. 
+
+With this, you can take whatever class you want, and you can invoke the stuff inside it. This is important for frameworks, the idea of reflection allows you to have an extremely flexible way of invoking your code. Normally you invoke code with source code, but here you don't need to. 
+
+Spring can invoke code W/O you having to code them explicitly. You have to tell it what to do
+
+Reflection exists because Java has always wanted to make it a flexible language. One to make large frameworks. This technique has been around since day 1 of Java. BUT reflection doesnt care about private, protected, access modifiers, encapsulation. Those concepts exist for programmers. 
+
+If there's no constructor, adds a default constructor. cls.newInstance() won't work if there's no default constructor.
+
+Parameter types are important, and name of the method. 
+
+So general flow: Make class -> Make instance -> Get methods -> invoke method 
+
+Reflection: I want to  arbitrarily use classes that I've never seen before.
+
+In java, there are two types of attribute 1) instance attributes [1 per object, name, age, etc], 2) static variable [do not exist in the object, same place as set age get age, class area]
+
+Methods can exist in a hierarchy, for example parent children. When you say `getMethod`, you are searching through the entire hierarchy that's available to you. `getDeclaredMethod` is limited only to the file for that given class. Useful for when you have different version of a method in different files (inheritance).
+
+HW
+--
+Instantiate these classes
+Call this, or load this, or instantiate this with a certain value, or look for this method
