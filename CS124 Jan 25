@@ -1,0 +1,24 @@
+There are two different ways of writing the parameters inside your 
+Var arg = variable argument list -> In java is simply an array 
+Can use String... args instead of String[] args
+Var args style is a lot shorter, the list you insert into the declaredmethod is variable, meaning it can change a lot
+
+In the params, Integer is .TYPE, which is different from .class.
+All the types have a .TYPE version, to represent the primitive version of that parameter type
+
+When invoking a method, you have an instance variable. That is the vry first parameter. Its onyl useful if the method is an instance method. IE, it is not static. It is called a class/static method. That means it is singular and shared across all instances.
+In that case, you dont need to put an instance variable. You can make it null. Any instance variable will be ignored.
+
+Daddy of all java classes is object.
+You need to be able to traverse the hierarchy to access a field or method. Calling get super class, all thate way up until `object`
+Using that technique is how the IDE is able to access all of the classes.
+Triangle with S icons are private
+green circle with C is public (Look at zipinfo)
+
+By being able to look at other software without knowing what they are before hand is powerful. 
+
+To be able to call one method, we need to get the class, make an instance of the class, pull out the method, make the parameter list, then make the argument list, then invoke the method. 
+
+----
+Add the jar to build path
+will add to referenced libraries
