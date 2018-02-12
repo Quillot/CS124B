@@ -16,6 +16,14 @@ public class MazeMaker
 {
 
 	private HashMap<Class, Object> roomMap = new HashMap<Class, Object>();
+	// Word bools: word1 => room2, word2 => room3
+	public static boolean hasWord1, hasWord2, hasWord3;
+	// Room 2 bools
+	public static boolean hasSword, hasDug;
+	// Room 3 bools
+	public static boolean hasKilledBabyDragon;
+	// Gamestate bools
+	public static boolean isDead;
 	
 	public void load() throws Exception
 	{
@@ -82,8 +90,8 @@ public class MazeMaker
 	
 	public void printDescription() throws Exception
 	{
-		Method m = currentRoom.getClass().getDeclaredMethod("getDescription");
-		System.out.println(m.invoke(currentRoom));		
+		Method m = currentRoom.getClass().getDeclaredMethod("getDescription", MazeMaker.class);
+		System.out.println(m.invoke(currentRoom, this));
 	}
 	
 	
@@ -122,7 +130,7 @@ public class MazeMaker
 	
 					if (c.command().equals(command))
 					{
-						System.out.println(m.invoke(currentRoom));
+						System.out.println(m.invoke(currentRoom, this));
 					}
 				}
 			}
@@ -144,10 +152,10 @@ public class MazeMaker
 		// take my input
 		Scanner scanner = new Scanner(System.in);
 		
-		while (true)
+		while (!isDead)
 		{
 			System.out.println();
-			System.out.println("Where do you want to go?: ");
+			System.out.println("What do you want to do?: ");
 			String text = scanner.nextLine();
 			if (text.equals("exit"))
 			{
@@ -158,5 +166,6 @@ public class MazeMaker
 				maze.move(text);
 			}
 		}
+		System.out.println("Game ended");
 	}
 }

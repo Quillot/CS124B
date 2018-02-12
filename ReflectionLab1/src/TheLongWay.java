@@ -42,7 +42,7 @@ public class TheLongWay
         Class<?> room3Class = Class.forName("Room3");
         Object room3 = room3Class.newInstance();
 
-        // attack the dragon at room 3
+//         attack the dragon at room 3
 //        System.out.println("You [attack] at Room 3");
 //		Method room3Attack = room3Class.getDeclaredMethod("attack");
 //		room3Attack.setAccessible(true);
@@ -67,6 +67,13 @@ public class TheLongWay
 		// Room 4
         Class<?> room4Class = Class.forName("Room4");
         Object room4 = room4Class.newInstance();
+        
+        // look at room 4
+        System.out.println("You [look] at Room 4");
+        Method room4Look = room4Class.getDeclaredMethod("look");
+        room4Look.setAccessible(true);
+        room4Look.invoke(room4);
+        System.out.println();
 
         // answer at room 4
         System.out.println("You [answer] at Room 4");
@@ -85,7 +92,7 @@ public class TheLongWay
         System.out.println("You [passphrase] at Room 5");
 		Method room5Answer = room5Class.getDeclaredMethod("passphrase", String.class, String.class, String.class);
 		room5Answer.setAccessible(true);
-		room5Answer.invoke(room5, "Ala", "Ka", "Zam");
+		room5Answer.invoke(room5, "Ala", "Ka", "Za");
 		System.out.println();
 
 
